@@ -1,16 +1,115 @@
-# React + Vite
+# JobJing — งานจริง จ้างจริง รีวิวจริง
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> แพลตฟอร์มจับคู่งานสำหรับแรงงานรายย่อยและผู้ว่าจ้างรายเล็กในกรุงเทพฯ โดยมี **กทม.** เป็นตัวกลางยืนยันตัวตนและตรวจประวัติของทั้งสองฝ่าย
+>
+> *A trust-first job-matching platform for low-skill workers and small/individual employers in Bangkok, with the city government acting as an identity & background verification intermediary.*
 
-Currently, two official plugins are available:
+![status](https://img.shields.io/badge/status-prototype-orange)
+![license](https://img.shields.io/badge/license-MIT-blue)
+![made%20with](https://img.shields.io/badge/made%20with-React-61dafb)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ปัญหาที่แก้
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+งานบริการและงานรายวัน เช่น คนตัดหญ้า แม่บ้าน ผู้ช่วยครัว ส่วนใหญ่ไม่ต้องใช้วุฒิหรือเรซูเม่ แต่ทั้งคนหางานและผู้ว่าจ้างต่างกังวลเรื่อง **ความปลอดภัยและความน่าเชื่อถือ** โดยเฉพาะงานในบ้าน:
 
-## Expanding the ESLint configuration
+- คนหางาน — ไม่รู้ว่านายจ้างเป็นใคร ตัวจริงไหม จะโดนเอาเปรียบหรือเปล่า
+- ผู้ว่าจ้าง — ไม่รู้ประวัติคนที่จะรับเข้าบ้าน เชื่อใจได้แค่ไหน
+- รีวิวบนแพลตฟอร์มทั่วไป — ปลอมง่าย ใครก็สร้างได้แม้ไม่เคยจ้างงานกันจริง
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+**JobJing** แก้ด้วยโมเดลสามฝ่าย ให้ภาครัฐ (กทม.) เป็นคนกลางยืนยันตัวตน และผูกรีวิวเข้ากับการจ้างงานจริงเท่านั้น
+
+## โมเดลสามฝ่าย
+
+| ฝ่าย | บทบาท |
+|------|--------|
+| 👷 **ผู้สมัคร (Seeker)** | กรอกโปรไฟล์ ระบบสรุป "จุดเด่น" และจับคู่งานที่เหมาะให้ |
+| 🏢 **ผู้ว่าจ้าง (Employer)** | โพสต์งาน คัดคน บริหาร pipeline การจ้าง และให้คะแนนผู้สมัครหลังงานจบ |
+| 🏛️ **กทม. (City)** | ยืนยันตัวตน + ตรวจประวัติอาชญากรรมของทั้งผู้สมัครและผู้ว่าจ้าง และเป็นผู้ควบคุมการเปิดเผยข้อมูลส่วนบุคคลแบบรายกรณี |
+
+## ฟีเจอร์เด่น
+
+- **ยืนยันตัวตนสองทาง** — ทั้งผู้สมัครและผู้ว่าจ้าง (บุคคลธรรมดา / SME) ผ่านการตรวจสอบโดยเจ้าหน้าที่ กทม.
+- **ระบบคุ้มครองข้อมูลส่วนบุคคล (PDPA)** — ขอความยินยอมก่อนเก็บข้อมูล และเปิดเผยข้อมูลละเอียด (เลขบัตร ปชช. / ผลตรวจประวัติ) ให้นายจ้าง **เฉพาะกรณีที่ กทม. อนุมัติเท่านั้น**
+- **Data Governance Portal** — workflow ให้นายจ้างยื่นคำขอข้อมูล และให้ กทม. อนุมัติ/ปฏิเสธรายกรณี
+- **จับคู่ตามจุดเด่น** — ให้คะแนนความตรงกัน (% match) พร้อมเหตุผลประกอบ
+- **รีวิวกันรีวิวปลอม** — นายจ้างให้คะแนนผู้สมัครได้ **ต่อเมื่อปิดงานจริงแล้ว** ทุกรีวิวจึงผูกกับการจ้างงานที่เกิดขึ้นจริง สร้างปลอมไม่ได้
+- **โมเดลครบ pipeline** — เสนอ → นัดสัมภาษณ์ → ทดลองงาน → จ้างแล้ว → ปิดงาน
+
+## Tech Stack
+
+- **React** (functional components + hooks)
+- **Vite** สำหรับ dev/build
+- CSS variables สำหรับ theming
+- (ทางเลือก) **Firebase** สำหรับ auth/ฐานข้อมูลในเวอร์ชันที่เชื่อมต่อจริง
+
+## เริ่มต้นใช้งาน
+
+```bash
+# 1. clone
+git clone https://github.com/Kantawat1/HackatechBKK.git
+cd jobjing
+
+# 2. ติดตั้ง dependencies
+npm install
+
+# 3. รันโหมด dev
+npm run dev
+
+# 4. build สำหรับ production
+npm run build
+```
+
+เปิดเบราว์เซอร์ที่ URL ที่ Vite แสดง (ปกติ `http://localhost:5173`)
+
+> หากเชื่อมต่อ Firebase ให้คัดลอก `.env.example` เป็น `.env` แล้วใส่ค่า config ของคุณเอง
+
+## โครงสร้างโปรเจกต์
+
+```
+src/
+├── pages/
+│   └── MainApp.jsx        # หน้าหลัก รวม flow ทั้ง 3 ฝ่าย (seeker / employer / city)
+├── components/            # คอมโพเนนต์ย่อยที่ใช้ซ้ำ
+│   ├── Logo.jsx
+│   ├── Bloom.jsx          # กราฟแสดง "จุดเด่น" ของผู้สมัคร
+│   ├── Badge.jsx
+│   ├── Stars.jsx          # คะแนนรีวิว
+│   ├── SkillChips.jsx
+│   ├── ProfileBody.jsx
+│   ├── StatusPill.jsx
+│   └── Sel.jsx
+└── utils/
+    ├── constants.js       # ข้อมูลตัวอย่าง (mock data) และค่าคงที่
+    └── helpers.js         # ฟังก์ชันคำนวณ match score, จัดรูปแบบ ฯลฯ
+```
+
+## ความเป็นส่วนตัวและความปลอดภัย
+
+JobJing ออกแบบโดยยึดหลัก **privacy-by-design**:
+
+- ข้อมูลในรีโพนี้เป็น **ข้อมูลจำลอง (mock) สำหรับเดโม่เท่านั้น** — เลขบัตรประชาชนทั้งหมดเป็นเลขสุ่ม ไม่ใช่ของบุคคลจริง
+- ข้อมูลละเอียดอ่อนจะไม่ถูกเปิดเผยให้นายจ้างโดยอัตโนมัติ ต้องผ่านการอนุมัติของ กทม. รายกรณี
+- **ห้าม commit** API key, Firebase config จริง, หรือข้อมูลส่วนบุคคลจริงลงในรีโพ (มีอยู่ใน `.gitignore` แล้ว)
+
+## สถานะโปรเจกต์
+
+⚠️ โปรเจกต์นี้เป็น **prototype / ผลงาน hackathon เพื่อสังคม** ที่พัฒนาขึ้นโดยอิสระ บทบาทของ กทม. ในแอปเป็น **โมเดลที่เสนอ (proposed model)** เพื่อสาธิตแนวคิด ยังไม่ใช่ความร่วมมือหรือการรับรองอย่างเป็นทางการจากกรุงเทพมหานคร
+
+## การร่วมพัฒนา (Contributing)
+
+ยินดีรับ issue และ pull request — โดยเฉพาะด้าน accessibility, การแปลภาษา, และการเชื่อมต่อ backend จริง
+1. Fork รีโพนี้
+2. สร้าง branch ใหม่ (`git checkout -b feature/ชื่อฟีเจอร์`)
+3. Commit และเปิด Pull Request พร้อมอธิบายสิ่งที่เปลี่ยน
+
+## License
+
+เผยแพร่ภายใต้ **MIT License** — ใช้ คัดลอก แก้ไข และนำไปต่อยอดได้อย่างอิสระ ดูรายละเอียดในไฟล์ [LICENSE](./LICENSE)
+
+> หมายเหตุ: หากต้องการบังคับให้ผู้ที่นำโค้ดไปแก้ไขและให้บริการต่อ ต้องเปิดเผยซอร์สโค้ดด้วย สามารถเปลี่ยนไปใช้ **AGPL-3.0** ได้ (เหมาะกับเว็บแอปที่ต้องการรักษาความเป็น open commons)
+
+---
+
+สร้างเพื่อช่วยให้การจ้างงานรายย่อยในกรุงเทพฯ **ปลอดภัย เป็นธรรม และน่าเชื่อถือ** มากขึ้น 🌱
