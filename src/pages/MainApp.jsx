@@ -344,11 +344,6 @@ export default function MainApp({ role, onLogout }) {
                   <div>
                     <div className="cand-name">
                       {c.name} 
-                      {c.identityVerified && (
-                        <span className="verified-identity-badge" style={{marginLeft: 6, fontSize:10, padding:"2px 6px", background:"#e6f4ea", color:"#137333", borderRadius:4, fontWeight:"bold", border:"1px solid #137333"}}>
-                          ✓ ตรวจสอบบุคคลแล้ว
-                        </span>
-                      )}
                     </div>
                     <div className="cand-head">{c.head}</div>
                   </div>
