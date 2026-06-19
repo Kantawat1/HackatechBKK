@@ -323,7 +323,7 @@ export default function MainApp({ role, onLogout }) {
     <div className="app">
       <header className="header">
         <div className="wrap head-in">
-          <div className="brand"><Logo/><div><div className="brandname">JobJing</div><div className="tagline">งานจริง จ้างจริง รีวิวจริง</div></div></div>
+          <div className="brand"><Logo/><div><div className="brandname">JobJing</div><div className="tagline">หางานจริง คนจริง การันตีโดย กทม.</div></div></div>
           <div style={{display:"flex",alignItems:"center",gap:12}}>
             <div className="role-indicator"><span className="ri-dot"/>{ROLE_LABELS[role]}</div>
             <button className="btn btn-ghost btn-sm" onClick={onLogout}>ออกจากระบบ</button>
@@ -334,7 +334,7 @@ export default function MainApp({ role, onLogout }) {
       <main className="wrap main">
         {/* EMPLOYER: talent */}
         {role==="employer"&&empView==="talent"&&(
-          <><div className="diff-bar"><b>JobJing · งานจริง จ้างจริง รีวิวจริง</b></div>
+          <><div className="diff-bar"><b>JobJing · หางานจริง คนจริง การันตีโดย กทม</b></div>
           <div className="row-head"><p className="lead nomb">คนเก่งที่พร้อมเริ่มงาน <b>{talent.length}</b> คน</p>
           <div className="controls"><button className={"toggle"+(onlyVerified?" on":"")} onClick={()=>setOnlyVerified(!onlyVerified)}><span className="tg-check">{onlyVerified?"✓":"○"}</span> รับรองโดย กทม. เท่านั้น</button><label className="catpick"><span>สายงาน</span><Sel withAll value={cat} onChange={e=>setCat(e.target.value)}/></label></div></div>
           {talent.length===0?(<div className="empty">ไม่พบผู้สมัครตามเงื่อนไข — ลองปรับตัวกรอง หรือโพสต์ตำแหน่งเพื่อให้เราช่วยหา</div>):(
