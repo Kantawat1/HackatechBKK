@@ -50,7 +50,7 @@ export default function MainApp({ role, onLogout }) {
   const [cityFilter, setCityFilter] = useState("pending");
   const [cityId, setCityId]     = useState(null);
   const [vnote, setVnote]       = useState("");
-  const [form, setForm]         = useState({title:"",cat:"it",area:"",num:"1",salMin:"",salMax:"",skills:"",reqData:[]});
+  const [form, setForm]         = useState({title:"",cat:"clean",area:"",num:"1",salMin:"",salMax:"",skills:"",reqData:[]});
   
   const [myCompanyName, setMyCompanyName] = useState("ร้านป้าแดง บริการรับจ้างทั่วไป");
   const [isEditingCo, setIsEditingCo]     = useState(false);
@@ -126,7 +126,7 @@ export default function MainApp({ role, onLogout }) {
     {id:3,title:"ผู้ช่วยครัว / ล้างจาน",cat:"kitchen",area:"เขตคลองเตย",salary:{min:11000,max:14000},matched:3,status:"open",reqData:["identity","health"]},
   ]);
   const [step, setStep]         = useState(1);
-  const [intake, setIntake]     = useState({name:"",id:"",age:"",sex:"ไม่ระบุ",phone:"",area:"",field:"it",exp:"",expText:"",skills:[],custom:"",availType:"now",salMin:"",salMax:"",scores:sc(50,50,50,50,50,50),pdpaConsent:false});
+  const [intake, setIntake]     = useState({name:"",id:"",age:"",sex:"ไม่ระบุ",phone:"",area:"",field:"clean",exp:"",expText:"",skills:[],custom:"",availType:"now",salMin:"",salMax:"",scores:sc(50,50,50,50,50,50),pdpaConsent:false});
   const [me, setMe]             = useState(DEFAULT_ME);
 
   const ping = (msg) => { setToast(msg); setTimeout(()=>setToast(""),3400); };
@@ -189,7 +189,7 @@ export default function MainApp({ role, onLogout }) {
     const sal={min:+form.salMin||0,max:+form.salMax||0};
     setMyJobs([{id:Date.now(),title:form.title.trim(),cat:form.cat,area:form.area||"—",salary:sal,matched:Math.floor(Math.random()*8)+1,status:"open",reqData:[...form.reqData]},...myJobs]);
     setPost(false); ping(`โพสต์ตำแหน่ง "${form.title.trim()}" แล้ว · ระบบกำลังจับคู่ผู้สมัครให้`);
-    setForm({title:"",cat:"it",area:"",num:"1",salMin:"",salMax:"",skills:"",reqData:[]});
+    setForm({title:"",cat:"clean",area:"",num:"1",salMin:"",salMax:"",skills:"",reqData:[]});
   };
 
   // โพสต์ได้เลยโดยไม่ต้องรอ กทม. ยืนยันก่อน (การยืนยันเป็นแบบสมัครใจ/ทำภายหลังได้)
