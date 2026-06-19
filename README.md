@@ -63,8 +63,6 @@ npm run build
 
 เปิดเบราว์เซอร์ที่ URL ที่ Vite แสดง (ปกติ `http://localhost:5173`)
 
-> หากเชื่อมต่อ Firebase ให้คัดลอก `.env.example` เป็น `.env` แล้วใส่ค่า config ของคุณเอง
-
 ## โครงสร้างโปรเจกต์
 
 ```
